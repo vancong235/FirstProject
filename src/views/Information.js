@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View, ImageBackground, StatusBar, Image, TouchableOpacity } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react';
 import { Dimensions } from 'react-native'
 import { useNavigation } from '@react-navigation/native';
 
@@ -12,6 +12,16 @@ const Information = () => {
       console.log('The button was pressed');
       navigation.navigate('Done'); // Chuyển hướng đến màn hình Error
     }
+    const [selectedImages, setSelectedImages] = useState([]);
+
+    const handleImageClick = (imageType) => {
+      console.log(`Đã click vào hình ảnh ${imageType}`);
+      if (selectedImages.includes(imageType)) {
+        setSelectedImages(selectedImages.filter((item) => item !== imageType));
+      } else {
+        setSelectedImages([...selectedImages, imageType]);
+      }
+    };
     return (
         <ImageBackground 
         source={require('../../assets/information/bg.png')}
@@ -33,11 +43,20 @@ const Information = () => {
                 source={require('../../assets/information/video.png')}
                 style={{ position: 'absolute', top: '27%', width:'80%', height: '25%', resizeMode: "contain" }}
             /> */}
-            <View style={{position: 'absolute', top: '31%', width:'80%', height: '35%', flexDirection: 'row' }}>
-                <Image source={require('../../assets/information/noodlesType/type1.png')} style={{ flex: 1, margin: 5, resizeMode: "contain"  }} />
-                <Image source={require('../../assets/information/noodlesType/type2.png')} style={{ flex: 1, margin: 5, resizeMode: "contain"   }} />
-                <Image source={require('../../assets/information/noodlesType/type3.png')} style={{ flex: 1, margin: 5, resizeMode: "contain"  }} />
-            </View>
+            <View style={{position: 'absolute', top: '38%', width:'80%', height: '35%', flexDirection: 'row' }}>
+      <TouchableOpacity onPress={() => handleImageClick('type1')} style={{ flex: 1, margin: 5, resizeMode: "contain"  }}>
+        <Image source={require('../../assets/information/noodlesType/type1.png')} style={{ width:"100%", height:"80%", resizeMode: "contain"}}/>
+        {selectedImages.includes('type1') && <Image source={require('../../assets/information/pick.png')} style={{ zIndex: -1, top: '-90%', width:'100%', height: '100%', resizeMode: "contain" }}/>}
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => handleImageClick('type2')} style={{ flex: 1, margin: 5, resizeMode: "contain"  }}>
+        <Image source={require('../../assets/information/noodlesType/type2.png')} style={{ width:"100%", height:"80%", resizeMode: "contain"}}/>
+        {selectedImages.includes('type2') && <Image source={require('../../assets/information/pick.png')} style={{ zIndex: -1, top: '-90%', width:'100%', height: '100%', resizeMode: "contain" }}/>}
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => handleImageClick('type3')} style={{ flex: 1, margin: 5, resizeMode: "contain"  }}>
+        <Image source={require('../../assets/information/noodlesType/type3.png')} style={{ width:"100%", height:"80%", resizeMode: "contain"}}/>
+        {selectedImages.includes('type3') && <Image source={require('../../assets/information/pick.png')} style={{ zIndex: -1, top: '-90%', width:'100%', height: '100%', resizeMode: "contain" }}/>}
+      </TouchableOpacity>
+    </View>
             <Image
                 source={require('../../assets/information/cupQuantity/3cups.png')}
                 style={{ position: 'absolute', top: '68%', width:'70%', height: '20%', resizeMode: "contain" }}
