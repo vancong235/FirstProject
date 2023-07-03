@@ -5,7 +5,6 @@ import Error from './src/views/Error'
 import Information from './src/views/Information'
 import Done from './src/views/Done'
 import Sellout from './src/views/Sellout'
-import Qrcode from './src/views/Qrcode'
 
 const Stack = createStackNavigator();
 
@@ -19,7 +18,7 @@ function App() {
         <Stack.Screen name="Information" component={Information}></Stack.Screen>
         <Stack.Screen name="Done" component={Done}></Stack.Screen>
         <Stack.Screen name="Sellout" component={Sellout}></Stack.Screen>
-        <Stack.Screen name="Qrcode" component={Qrcode}></Stack.Screen>
+        {/* <Stack.Screen name="Qrcode" component={Qrcode}></Stack.Screen> */}
       </Stack.Navigator>
   )
 };

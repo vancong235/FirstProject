@@ -29,7 +29,7 @@ const Home = () => {
           x: processX,
           y: processY,
         });
-        navigation.navigate('Qrcode'); // Chuyển hướng đến màn hình Error
+        navigation.navigate('Error'); // Chuyển hướng đến màn hình Error
       }
     };
   
@@ -75,12 +75,7 @@ const Home = () => {
                 }}
               />
           </PanGestureHandler>
-            {/* <TouchableOpacity onPress={handlePress} style={{ position: 'absolute', top: '75%', width:'33%', height: '19%', resizeMode: "contain",justifyContent: 'flex-end', alignItems: 'center', flexDirection: 'column' }}>
-                <Image
-                    source={require('../../assets/common/drag.png')}
-                    style={{width: "100%", height: '100%', resizeMode: "contain" }}
-                />
-            </TouchableOpacity> */}
+
             <View style={{ position: 'absolute', top: '80%', right: '9%', bottom: 0 }}>
             <Image
                 source={require('../../assets/common/rect.png')}
